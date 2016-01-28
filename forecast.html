@@ -1,0 +1,12 @@
+<h1>The forecast is {{weather}}</h1>
+<div>
+	{{#forecast}}
+		<div class="day">
+			<h2>{{day.weekday}}</h2>
+			<p>Temp {{day.temp}}</p>
+	  		<p>Wind {{day.wind}}</p>
+		</div>
+	{{/forecast}}
+</div>
+<button onClick="AppEvents('FORECAST.MORE');">More</button>
+<button onClick="{{events}}">Ya</button>
