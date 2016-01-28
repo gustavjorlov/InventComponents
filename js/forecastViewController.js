@@ -1,4 +1,4 @@
-var Forecast = require('./forecast.html');
+var Forecast = require('../templates/forecast.html');
 
 module.exports = function forecastViewController(logic){
 
