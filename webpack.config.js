@@ -32,6 +32,10 @@ module.exports = {
 			}
 		]
 	},
+	jshint: {
+		esversion: 6,
+		curly: true
+	},
 	output: {
 		filename: "dist/bundle.js"
 	},

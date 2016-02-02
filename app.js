@@ -1,13 +1,28 @@
-var forecastViewController = require('./js/forecastViewController');
-var placesViewController = require('./js/placesViewController');
 var apiClass = require('./js/api');
 var logicClass = require('./js/logic');
 
 var api = apiClass();
 var logic = logicClass(api);
 
+var forecastViewController = require('./js/forecastViewController')(logic);
+var placesViewController = require('./js/placesViewController');
+
+
+
 window.AppEvents = function(name){
-	console.log(name);
+	var args = name.split(".");
+	switch(args[0]){
+		case "FORECAST":
+			forecastViewController.eventHandler(args);
+			break;
+		default:
+			console.log("AppEvents", args);
+	}
+	renderApp();
 };
 
-forecastViewController(logic).render();
+function renderApp(){
+	forecastViewController.render();
+}
+
+renderApp();
