@@ -2,7 +2,8 @@ export default class App{
 
 	constructor(startComponent){
 		this.startComponent = startComponent;
-		console.log("Constructing App");
+		console.log("\n\t--> Construction Done <--\n\n");
+
 	}
 
 	render(){
