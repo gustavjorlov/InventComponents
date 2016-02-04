@@ -1,5 +1,6 @@
 import Component from '../framework/Component';
 import SearchTemplate from '../templates/search.html';
+import API from './Api';
 
 class Search extends Component{
 	constructor(){
@@ -13,6 +14,11 @@ class Search extends Component{
 	}
 
 	search(){
+		API.get().then(function(response){
+			console.log("success", response);
+		}, function(){
+			console.log("error");
+		});
 		console.log(document.getElementById("searchField").value);
 	}
 
