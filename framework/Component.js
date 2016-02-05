@@ -1,12 +1,13 @@
 import Immutable from 'immutable';
 import EventEngine from './EventEngine';
+import EventEmitter from 'events';
 
-export default class Component{
+export default class Component extends EventEmitter{
 
 	constructor(state, name){
+		super();
 		this.state = Immutable.Map(state);
 		this.name = name;
-		this.dirty = false;
 
 		console.log("- Constructing " + this.name);
 	}
@@ -19,7 +20,6 @@ export default class Component{
 
 	render(){
 		console.log("Component " + this.name + " has not implemented render()");
-		this.dirty = false;
 		return "Component " + this.name + " has not implemented render()";
 	}
 
@@ -27,6 +27,7 @@ export default class Component{
 
 	setState(state){
 		this.state = Immutable.Map(state);
+		this.emit("dirty");
 	}
 
 	getState(){

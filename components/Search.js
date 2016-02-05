@@ -2,20 +2,23 @@ import Component from '../framework/Component';
 import SearchTemplate from '../templates/search.html';
 import API from './Api';
 
-class Search extends Component{
+export default class Search extends Component{
 	constructor(){
 		super(null, "Search");
 		this.registerEvents({
-			'search': this.search,
+			'search': this.search.bind(this),
 			'reset': function(){
 				console.log("resetting");
 			}
 		});
+		
 	}
 
 	search(){
-		API.get().then(function(response){
-			console.log("success", response);
+		var that = this;
+		API.getNextForecast().then(function(response){
+			console.log("success", response.forecast[0].day);
+			that.emit("result", response);
 		}, function(){
 			console.log("error");
 		});
@@ -26,5 +29,3 @@ class Search extends Component{
 		return SearchTemplate({'search': this.getEvent('search')});
 	}
 }
-
-export default new Search();

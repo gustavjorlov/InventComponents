@@ -2,25 +2,14 @@ import Component from '../framework/Component';
 import Immutable from 'immutable';
 import Forecast from '../templates/forecast.html';
 
-class ForecastList extends Component{
+export default class ForecastList extends Component{
 	constructor(){
 		super(null, "ForecastList");
+	}
+
+	addForecast(state){
 		this.setState({
-			'forecast': [
-				{
-					'day': {
-						'weekday': 'Monday',
-						'temp': 21.2,
-						'wind': 0.6
-					}
-				}, {
-					'day': {
-						'weekday': 'Tuesday',
-						'temp': 23.4,
-						'wind': 1.2
-					}
-				}
-			]
+			'forecast': (this.getState().forecast || []).concat(state.forecast[0])
 		});
 	}
 
@@ -28,5 +17,3 @@ class ForecastList extends Component{
 		return Forecast(this.getState());
 	}
 }
-
-export default new ForecastList();
