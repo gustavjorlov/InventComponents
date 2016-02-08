@@ -1,6 +1,6 @@
 import Component from '../framework/Component';
 import Immutable from 'immutable';
-import Forecast from '../templates/forecast.html';
+import Day from './Day';
 
 export default class ForecastList extends Component{
 	constructor(){
@@ -14,6 +14,10 @@ export default class ForecastList extends Component{
 	}
 
 	render(){
-		return Forecast(this.getState());
+		var forecastData = this.getState().forecast || [];
+		
+		return "<div>"+forecastData.map(function(day){
+			return (new Day(day)).render();
+		}).join("")+"</div>";
 	}
 }

@@ -1,5 +1,4 @@
 import Component from '../framework/Component';
-import SearchTemplate from '../templates/search.html';
 import API from './Api';
 
 export default class Search extends Component{
@@ -26,6 +25,11 @@ export default class Search extends Component{
 	}
 
 	render(){
-		return SearchTemplate({'search': this.getEvent('search')});
+		return `
+			<div>
+				<input id="searchField" type="text" placeholder="Search for a city" />
+				<button onClick='${this.getEvent("search")}'>Search</button>
+			</div>
+		`;
 	}
 }

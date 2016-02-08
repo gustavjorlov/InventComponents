@@ -19,6 +19,7 @@ class WeatherApp extends Component{
 	}
 
 	dirtydata(){
+		console.log("dirty");
 		this.emit("dirty");
 	}
 

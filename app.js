@@ -1,11 +1,15 @@
 import WeatherApp from './components/WeatherApp';
-import App from './framework/App';
+import VirtualApp from './framework/VirtualApp';
 
-render();
+class App extends VirtualApp{
 
-function render(){
-	const appMarkup = WeatherApp.render();
-	document.getElementById("app").innerHTML = appMarkup;
+	constructor(startComponent){
+		super(startComponent);
+		this.startComponent = startComponent;
+		console.log("\n\t--> App Done <--\n\n");
+	}
 }
 
-WeatherApp.on("dirty", render);
+var app = new App(WeatherApp);
+	
+// WeatherApp.on("dirty", render);
