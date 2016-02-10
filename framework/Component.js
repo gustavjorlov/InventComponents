@@ -9,7 +9,7 @@ export default class Component extends EventEmitter{
 		this.state = Immutable.Map(state);
 		this.name = name;
 
-		console.log("- Constructing " + this.name);
+		// console.log("- Constructing " + this.name);
 	}
 
 	shouldUpdate(){
@@ -31,7 +31,7 @@ export default class Component extends EventEmitter{
 	}
 
 	getState(){
-		console.log("Component " + this.name + " returning state");
+		// console.log("Component " + this.name + " returning state");
 		return this.state.toJSON();
 	}
 

@@ -16,8 +16,11 @@ export default class ForecastList extends Component{
 	render(){
 		var forecastData = this.getState().forecast || [];
 		
-		return "<div>"+forecastData.map(function(day){
-			return (new Day(day)).render();
-		}).join("")+"</div>";
+		return `
+			<div>
+				${forecastData.map(function(day){
+					return (new Day(day)).render();
+				}).join("")}
+			</div>`;
 	}
 }

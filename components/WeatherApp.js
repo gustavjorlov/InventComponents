@@ -14,12 +14,12 @@ class WeatherApp extends Component{
 	}
 
 	searchEvents(result){
-		console.log(result);
+		// console.log(result);
 		this.forecastList.addForecast(result);
 	}
 
 	dirtydata(){
-		console.log("dirty");
+		// console.log("dirty");
 		this.emit("dirty");
 	}
 
@@ -28,7 +28,12 @@ class WeatherApp extends Component{
 	}
 
 	render(){
-		return "<div>"+this.search.render()+"</div><div>"+this.forecastList.render()+"</div>";
+		return `
+			<div id="${this.name}">
+				<div><h1>Header</h1></div>
+				${this.search.render()}
+				${this.forecastList.render()}
+			</div>`;
 	}
 }
 
